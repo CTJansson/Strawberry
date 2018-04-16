@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ProjectStrawberry.Models.LeaderboardModel>
+
+@foreach (var item in Model)
+{
+    <p>@Ajax.ActionLink(@item.Name, "GetCharacter", "Character", new { id = @item.Id } , new AjaxOptions { UpdateTargetId = "body-main" }, null) - @item.Level</p>
+}

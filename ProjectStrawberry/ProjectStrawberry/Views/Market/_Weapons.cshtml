@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ProjectStrawberry.DAL.Weapon>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="td-market200">@item.Name</td>
+                        <td class="td-market td-market-background">@item.MinimumDamage - @item.MaximumDamage dmg</td>
+                        <td class="td-market ">@item.ReqWeaponMastery wp</td>
+                        <td class="td-market td-market-background">@item.Price glods</td>
+                        <td class="td-market ">@item.Weight cc</td>
+                        <td class="td-market td-market-background">@Html.ActionLink("Buy", "BuyWeapon", "Market", new { weaponId = @item.Id }, null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Ajax.ActionLink("Back", "Index", "Market", null, new AjaxOptions { UpdateTargetId = "body-main" }, new { @class = "navbar-text navbar-link" })
+    </div>
+</div>

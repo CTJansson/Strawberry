@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6830514545cc44c8a01dde5cb4da092f" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="ProjectStrawberryModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.AspNetUser" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Class" Width="1.5" PointX="6" PointY="7.5" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Gender" Width="1.5" PointX="6" PointY="2.125" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.WeaponType" Width="1.5" PointX="10.375" PointY="10.375" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ProjectStrawberryModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Character" Width="1.5" PointX="8.25" PointY="2.625" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Character__Accou__11158940" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Character__Class__12FDD1B2" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Character__Gende__1209AD79" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Arena" Width="1.5" PointX="10.5" PointY="7.875" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Arena__Character__41B8C09B" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Armor" Width="1.5" PointX="13.375" PointY="12" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.ArmorType" Width="1.5" PointX="11.125" PointY="12.625" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Shield" Width="1.5" PointX="13.375" PointY="0.75" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Armor__ArmorType__67DE6983" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.Weapon" Width="1.5" PointX="12.625" PointY="15.625" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Weapon__WeaponTy__5A4F643B" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.EquipmentCharacter" Width="1.5" PointX="15.625" PointY="8.125" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Equipment__Armor__60083D91" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Equipment__Chara__5D2BD0E6" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Equipment__Shiel__5F141958" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__Equipment__Weapo__5E1FF51F" />
+        <EntityTypeShape EntityType="ProjectStrawberryModel.CombatLog" Width="1.5" PointX="10.5" PointY="4.875" />
+        <AssociationConnector Association="ProjectStrawberryModel.FK__CombatLog__Playe__7226EDCC" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

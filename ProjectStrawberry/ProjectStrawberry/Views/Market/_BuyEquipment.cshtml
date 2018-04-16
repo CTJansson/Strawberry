@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProjectStrawberry.Models.MarketEquipment>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model.Where(m => m.ArmorId != null))
+                {
+                    <tr>
+                        <td class="td-market200 td-market-background">@item.Name</td>
+                        <td class="td-market200">@item.EquipmentType</td>
+                        <td class="td-market td-market-background">@item.AbsorbValue abs</td>
+                        <td class="td-market ">@item.Price glods</td>
+                        <td class="td-market td-market-background">@item.Weight cc</td>
+                        <td class="td-market"><button onclick="buyArmor(@item.ArmorId)">Buy</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model.Where(m => m.ShieldId != null))
+                {
+                    <tr>
+                        <td class="td-market200 td-market-background">@item.Name</td>
+                        <td class="td-market200">@item.EquipmentType</td>
+                        <td class="td-market td-market-background">@item.AbsorbValue block</td>
+                        <td class="td-market ">@item.Price glods</td>
+                        <td class="td-market td-market-background">@item.Weight cc</td>
+                        <td class="td-market"><button onclick="buyShield(@item.ShieldId)">Buy</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model.Where(m => m.WeaponId != null))
+                {
+                    <tr>
+                        <td class="td-market200 td-market-background">@item.Name</td>
+                        <td class="td-market200">@item.EquipmentType</td>
+                        <td class="td-market td-market-background">@item.MinimumDamage - @item.MaximumDamage damage</td>
+                        <td class="td-market ">@item.Price glods</td>
+                        <td class="td-market td-market-background">@item.Weight cc</td>
+                        <td class="td-market"><button onclick="buyWeapon(@item.WeaponId)">Buy</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

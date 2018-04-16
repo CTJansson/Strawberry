@@ -1,0 +1,87 @@
+﻿@import '../_variables';
+@import 'base';
+
+
+.md-container {
+    position: fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow:hidden;
+    padding:10px 15px 50px;
+
+    .md-btn {
+        padding:8px 16px;
+        background-color:#f1d600;
+        position:absolute;
+        bottom:10px;
+        left:15px;
+        right:15px;
+        text-align: center;
+
+    }
+
+    .md-message {
+
+    }
+
+
+}
+
+
+
+@media screen and (min-width: $screen-xs-min) {
+    .md-container {
+
+        left:initial;
+        right:20px;
+        bottom:20px;
+        width:300px;
+        padding-bottom:77px;
+
+        .md-btn {
+            right:15px;
+            bottom:37px;
+        }
+
+        .md-message {
+
+        }
+
+        .md-logo {
+            display:block;
+            position:absolute;
+            bottom:8px;
+            left:calc(50% - 50px); //--center align
+        }
+
+    }
+}
+
+
+
+@media screen and (min-width: $screen-sm-min) {
+
+    .md-container {
+
+        padding-bottom:87px;
+
+
+        .md-message {
+            font-size:1em;
+        }
+    }
+
+}
+
+@media screen and (min-width: $screen-md-min) {
+
+    .md-container {
+
+
+        .md-message {
+
+        }
+    }
+
+}

@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProjectStrawberryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Arena">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterId" Type="int" Nullable="false" />
+          <Property Name="Forfeit" Type="int" Nullable="false" />
+          <Property Name="Queued" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Armor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArmorTypeId" Type="int" Nullable="false" />
+          <Property Name="ArmorValue" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="TourmanemntReward" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArmorType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gold" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Experience" Type="int" Nullable="false" />
+          <Property Name="Stamina" Type="int" Nullable="false" />
+          <Property Name="Strength" Type="int" Nullable="false" />
+          <Property Name="Quickness" Type="int" Nullable="false" />
+          <Property Name="Block" Type="int" Nullable="false" />
+          <Property Name="Evasion" Type="int" Nullable="false" />
+          <Property Name="Parry" Type="int" Nullable="false" />
+          <Property Name="Vitality" Type="int" Nullable="false" />
+          <Property Name="Health" Type="int" Nullable="false" />
+          <Property Name="Sword" Type="int" Nullable="false" />
+          <Property Name="Mace" Type="int" Nullable="false" />
+          <Property Name="Dagger" Type="int" Nullable="false" />
+          <Property Name="Spear" Type="int" Nullable="false" />
+          <Property Name="Axe" Type="int" Nullable="false" />
+          <Property Name="Polearm" Type="int" Nullable="false" />
+          <Property Name="Alive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CombatLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Player" Type="int" />
+          <Property Name="Spoiler" Type="nvarchar(max)" />
+          <Property Name="GameDate" Type="datetime" Nullable="false" />
+          <Property Name="Log" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentCharacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterId" Type="int" Nullable="false" />
+          <Property Name="WeaponId" Type="int" />
+          <Property Name="ShieldId" Type="int" />
+          <Property Name="ArmorId" Type="int" />
+          <Property Name="MainHandEquipped" Type="bit" Nullable="false" />
+          <Property Name="OffHandEquipped" Type="bit" Nullable="false" />
+          <Property Name="Equipped" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shield">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BlockValue" Type="int" Nullable="false" />
+          <Property Name="ReqShieldMastery" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="TourmanemntReward" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WeaponTypeId" Type="int" Nullable="false" />
+          <Property Name="MinimumDamage" Type="int" Nullable="false" />
+          <Property Name="MaximumDamage" Type="int" Nullable="false" />
+          <Property Name="ReqWeaponMastery" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="TournamentReward" Type="bit" Nullable="false" />
+          <Property Name="TwoHanded" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeaponType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Armor__ArmorType__67DE6983">
+          <End Role="ArmorType" Type="Self.ArmorType" Multiplicity="1" />
+          <End Role="Armor" Type="Self.Armor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmorType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Armor">
+              <PropertyRef Name="ArmorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Accou__6D6238AF">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Class__6F4A8121">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Gende__6E565CE8">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CombatLog__Playe__7226EDCC">
+          <End Role="Character" Type="Self.Character" Multiplicity="0..1" />
+          <End Role="CombatLog" Type="Self.CombatLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CombatLog">
+              <PropertyRef Name="Player" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Armor__60083D91">
+          <End Role="Armor" Type="Self.Armor" Multiplicity="0..1" />
+          <End Role="EquipmentCharacter" Type="Self.EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="ArmorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Shiel__5F141958">
+          <End Role="Shield" Type="Self.Shield" Multiplicity="0..1" />
+          <End Role="EquipmentCharacter" Type="Self.EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shield">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="ShieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Weapo__5E1FF51F">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+          <End Role="EquipmentCharacter" Type="Self.EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="WeaponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__WeaponTy__5A4F643B">
+          <End Role="WeaponType" Type="Self.WeaponType" Multiplicity="1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeaponType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectStrawberryModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arena" EntityType="Self.Arena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Armor" EntityType="Self.Armor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArmorType" EntityType="Self.ArmorType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CombatLog" EntityType="Self.CombatLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentCharacter" EntityType="Self.EquipmentCharacter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shield" EntityType="Self.Shield" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weapon" EntityType="Self.Weapon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeaponType" EntityType="Self.WeaponType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Armor__ArmorType__67DE6983" Association="Self.FK__Armor__ArmorType__67DE6983">
+            <End Role="ArmorType" EntitySet="ArmorType" />
+            <End Role="Armor" EntitySet="Armor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Accou__6D6238AF" Association="Self.FK__Character__Accou__6D6238AF">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Class__6F4A8121" Association="Self.FK__Character__Class__6F4A8121">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Gende__6E565CE8" Association="Self.FK__Character__Gende__6E565CE8">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CombatLog__Playe__7226EDCC" Association="Self.FK__CombatLog__Playe__7226EDCC">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="CombatLog" EntitySet="CombatLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Armor__60083D91" Association="Self.FK__Equipment__Armor__60083D91">
+            <End Role="Armor" EntitySet="Armor" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Shiel__5F141958" Association="Self.FK__Equipment__Shiel__5F141958">
+            <End Role="Shield" EntitySet="Shield" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Weapo__5E1FF51F" Association="Self.FK__Equipment__Weapo__5E1FF51F">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeaponTy__5A4F643B" Association="Self.FK__Weapon__WeaponTy__5A4F643B">
+            <End Role="WeaponType" EntitySet="WeaponType" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectStrawberryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProjectStrawberryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="ProjectStrawberryModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="ProjectStrawberryModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="ProjectStrawberryModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="ProjectStrawberryModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="ProjectStrawberryModel.AspNetUser" />
+          <EntitySet Name="Classes" EntityType="ProjectStrawberryModel.Class" />
+          <EntitySet Name="Genders" EntityType="ProjectStrawberryModel.Gender" />
+          <EntitySet Name="WeaponTypes" EntityType="ProjectStrawberryModel.WeaponType" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ProjectStrawberryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ProjectStrawberryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="ProjectStrawberryModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Characters" EntityType="ProjectStrawberryModel.Character" />
+          <AssociationSet Name="FK__Character__Accou__11158940" Association="ProjectStrawberryModel.FK__Character__Accou__11158940">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Class__12FDD1B2" Association="ProjectStrawberryModel.FK__Character__Class__12FDD1B2">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Gende__1209AD79" Association="ProjectStrawberryModel.FK__Character__Gende__1209AD79">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <EntitySet Name="Arenas" EntityType="ProjectStrawberryModel.Arena" />
+          <AssociationSet Name="FK__Arena__Character__41B8C09B" Association="ProjectStrawberryModel.FK__Arena__Character__41B8C09B">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Arena" EntitySet="Arenas" />
+          </AssociationSet>
+          <EntitySet Name="Armors" EntityType="ProjectStrawberryModel.Armor" />
+          <EntitySet Name="ArmorTypes" EntityType="ProjectStrawberryModel.ArmorType" />
+          <EntitySet Name="Shields" EntityType="ProjectStrawberryModel.Shield" />
+          <AssociationSet Name="FK__Armor__ArmorType__67DE6983" Association="ProjectStrawberryModel.FK__Armor__ArmorType__67DE6983">
+            <End Role="ArmorType" EntitySet="ArmorTypes" />
+            <End Role="Armor" EntitySet="Armors" />
+          </AssociationSet>
+          <EntitySet Name="Weapons" EntityType="ProjectStrawberryModel.Weapon" />
+          <AssociationSet Name="FK__Weapon__WeaponTy__5A4F643B" Association="ProjectStrawberryModel.FK__Weapon__WeaponTy__5A4F643B">
+            <End Role="WeaponType" EntitySet="WeaponTypes" />
+            <End Role="Weapon" EntitySet="Weapons" />
+          </AssociationSet>
+          <EntitySet Name="EquipmentCharacters" EntityType="ProjectStrawberryModel.EquipmentCharacter" />
+          <AssociationSet Name="FK__Equipment__Armor__60083D91" Association="ProjectStrawberryModel.FK__Equipment__Armor__60083D91">
+            <End Role="Armor" EntitySet="Armors" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Chara__5D2BD0E6" Association="ProjectStrawberryModel.FK__Equipment__Chara__5D2BD0E6">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Shiel__5F141958" Association="ProjectStrawberryModel.FK__Equipment__Shiel__5F141958">
+            <End Role="Shield" EntitySet="Shields" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Weapo__5E1FF51F" Association="ProjectStrawberryModel.FK__Equipment__Weapo__5E1FF51F">
+            <End Role="Weapon" EntitySet="Weapons" />
+            <End Role="EquipmentCharacter" EntitySet="EquipmentCharacters" />
+          </AssociationSet>
+          <EntitySet Name="CombatLogs" EntityType="ProjectStrawberryModel.CombatLog" />
+          <AssociationSet Name="FK__CombatLog__Playe__7226EDCC" Association="ProjectStrawberryModel.FK__CombatLog__Playe__7226EDCC">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="CombatLog" EntitySet="CombatLogs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ProjectStrawberryModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ProjectStrawberryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ProjectStrawberryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="ProjectStrawberryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="ProjectStrawberryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ProjectStrawberryModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="Characters" Relationship="ProjectStrawberryModel.FK__Character__Accou__11158940" FromRole="AspNetUser" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Characters" Relationship="ProjectStrawberryModel.FK__Character__Class__12FDD1B2" FromRole="Class" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Characters" Relationship="ProjectStrawberryModel.FK__Character__Gende__1209AD79" FromRole="Gender" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="WeaponType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Weapons" Relationship="ProjectStrawberryModel.FK__Weapon__WeaponTy__5A4F643B" FromRole="WeaponType" ToRole="Weapon" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="ProjectStrawberryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ProjectStrawberryModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="ProjectStrawberryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ProjectStrawberryModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="ProjectStrawberryModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="ProjectStrawberryModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="Avatar" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gold" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Experience" Type="Int32" Nullable="false" />
+          <Property Name="Stamina" Type="Int32" Nullable="false" />
+          <Property Name="Strength" Type="Int32" Nullable="false" />
+          <Property Name="Quickness" Type="Int32" Nullable="false" />
+          <Property Name="Block" Type="Int32" Nullable="false" />
+          <Property Name="Evasion" Type="Int32" Nullable="false" />
+          <Property Name="Parry" Type="Int32" Nullable="false" />
+          <Property Name="Vitality" Type="Int32" Nullable="false" />
+          <Property Name="Health" Type="Int32" Nullable="false" />
+          <Property Name="Sword" Type="Int32" Nullable="false" />
+          <Property Name="Mace" Type="Int32" Nullable="false" />
+          <Property Name="Dagger" Type="Int32" Nullable="false" />
+          <Property Name="Spear" Type="Int32" Nullable="false" />
+          <Property Name="Axe" Type="Int32" Nullable="false" />
+          <Property Name="Polearm" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="ProjectStrawberryModel.FK__Character__Accou__11158940" FromRole="Character" ToRole="AspNetUser" />
+          <NavigationProperty Name="Class" Relationship="ProjectStrawberryModel.FK__Character__Class__12FDD1B2" FromRole="Character" ToRole="Class" />
+          <NavigationProperty Name="Gender" Relationship="ProjectStrawberryModel.FK__Character__Gende__1209AD79" FromRole="Character" ToRole="Gender" />
+          <NavigationProperty Name="Arenas" Relationship="ProjectStrawberryModel.FK__Arena__Character__41B8C09B" FromRole="Character" ToRole="Arena" />
+          <NavigationProperty Name="EquipmentCharacters" Relationship="ProjectStrawberryModel.FK__Equipment__Chara__5D2BD0E6" FromRole="Character" ToRole="EquipmentCharacter" />
+          <Property Name="Alive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CombatLogs" Relationship="ProjectStrawberryModel.FK__CombatLog__Playe__7226EDCC" FromRole="Character" ToRole="CombatLog" />
+          </EntityType>
+        <Association Name="FK__Character__Accou__11158940">
+          <End Type="ProjectStrawberryModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Class__12FDD1B2">
+          <End Type="ProjectStrawberryModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Gende__1209AD79">
+          <End Type="ProjectStrawberryModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Arena">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterId" Type="Int32" Nullable="false" />
+          <Property Name="Forfeit" Type="Int32" Nullable="false" />
+          <Property Name="Queued" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Character" Relationship="ProjectStrawberryModel.FK__Arena__Character__41B8C09B" FromRole="Arena" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK__Arena__Character__41B8C09B">
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Arena" Role="Arena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Arena">
+              <PropertyRef Name="CharacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Armor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArmorTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ArmorValue" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="TourmanemntReward" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArmorType" Relationship="ProjectStrawberryModel.FK__Armor__ArmorType__67DE6983" FromRole="Armor" ToRole="ArmorType" />
+          <NavigationProperty Name="EquipmentCharacters" Relationship="ProjectStrawberryModel.FK__Equipment__Armor__60083D91" FromRole="Armor" ToRole="EquipmentCharacter" />
+        </EntityType>
+        <EntityType Name="ArmorType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Armors" Relationship="ProjectStrawberryModel.FK__Armor__ArmorType__67DE6983" FromRole="ArmorType" ToRole="Armor" />
+        </EntityType>
+        <EntityType Name="Shield">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlockValue" Type="Int32" Nullable="false" />
+          <Property Name="ReqShieldMastery" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="TourmanemntReward" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EquipmentCharacters" Relationship="ProjectStrawberryModel.FK__Equipment__Shiel__5F141958" FromRole="Shield" ToRole="EquipmentCharacter" />
+        </EntityType>
+        <Association Name="FK__Armor__ArmorType__67DE6983">
+          <End Type="ProjectStrawberryModel.ArmorType" Role="ArmorType" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Armor" Role="Armor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmorType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Armor">
+              <PropertyRef Name="ArmorTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WeaponTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MinimumDamage" Type="Int32" Nullable="false" />
+          <Property Name="MaximumDamage" Type="Int32" Nullable="false" />
+          <Property Name="ReqWeaponMastery" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="TournamentReward" Type="Boolean" Nullable="false" />
+          <Property Name="TwoHanded" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WeaponType" Relationship="ProjectStrawberryModel.FK__Weapon__WeaponTy__5A4F643B" FromRole="Weapon" ToRole="WeaponType" />
+          <NavigationProperty Name="EquipmentCharacters" Relationship="ProjectStrawberryModel.FK__Equipment__Weapo__5E1FF51F" FromRole="Weapon" ToRole="EquipmentCharacter" />
+        </EntityType>
+        <Association Name="FK__Weapon__WeaponTy__5A4F643B">
+          <End Type="ProjectStrawberryModel.WeaponType" Role="WeaponType" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.Weapon" Role="Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeaponType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EquipmentCharacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterId" Type="Int32" Nullable="false" />
+          <Property Name="WeaponId" Type="Int32" />
+          <Property Name="ShieldId" Type="Int32" />
+          <Property Name="ArmorId" Type="Int32" />
+          <Property Name="MainHandEquipped" Type="Boolean" Nullable="false" />
+          <Property Name="OffHandEquipped" Type="Boolean" Nullable="false" />
+          <Property Name="Equipped" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Armor" Relationship="ProjectStrawberryModel.FK__Equipment__Armor__60083D91" FromRole="EquipmentCharacter" ToRole="Armor" />
+          <NavigationProperty Name="Character" Relationship="ProjectStrawberryModel.FK__Equipment__Chara__5D2BD0E6" FromRole="EquipmentCharacter" ToRole="Character" />
+          <NavigationProperty Name="Shield" Relationship="ProjectStrawberryModel.FK__Equipment__Shiel__5F141958" FromRole="EquipmentCharacter" ToRole="Shield" />
+          <NavigationProperty Name="Weapon" Relationship="ProjectStrawberryModel.FK__Equipment__Weapo__5E1FF51F" FromRole="EquipmentCharacter" ToRole="Weapon" />
+        </EntityType>
+        <Association Name="FK__Equipment__Armor__60083D91">
+          <End Type="ProjectStrawberryModel.Armor" Role="Armor" Multiplicity="0..1" />
+          <End Type="ProjectStrawberryModel.EquipmentCharacter" Role="EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="ArmorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Chara__5D2BD0E6">
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="1" />
+          <End Type="ProjectStrawberryModel.EquipmentCharacter" Role="EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="CharacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Shiel__5F141958">
+          <End Type="ProjectStrawberryModel.Shield" Role="Shield" Multiplicity="0..1" />
+          <End Type="ProjectStrawberryModel.EquipmentCharacter" Role="EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shield">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="ShieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Weapo__5E1FF51F">
+          <End Type="ProjectStrawberryModel.Weapon" Role="Weapon" Multiplicity="0..1" />
+          <End Type="ProjectStrawberryModel.EquipmentCharacter" Role="EquipmentCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentCharacter">
+              <PropertyRef Name="WeaponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CombatLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Player" Type="Int32" />
+          <Property Name="Spoiler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GameDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Log" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Character" Relationship="ProjectStrawberryModel.FK__CombatLog__Playe__7226EDCC" FromRole="CombatLog" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK__CombatLog__Playe__7226EDCC">
+          <End Type="ProjectStrawberryModel.Character" Role="Character" Multiplicity="0..1" />
+          <End Type="ProjectStrawberryModel.CombatLog" Role="CombatLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CombatLog">
+              <PropertyRef Name="Player" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectStrawberryModelStoreContainer" CdmEntityContainer="ProjectStrawberryEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeaponTypes">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.WeaponType">
+              <MappingFragment StoreEntitySet="WeaponType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ProjectStrawberryModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Alive" ColumnName="Alive" />
+                <ScalarProperty Name="Polearm" ColumnName="Polearm" />
+                <ScalarProperty Name="Axe" ColumnName="Axe" />
+                <ScalarProperty Name="Spear" ColumnName="Spear" />
+                <ScalarProperty Name="Dagger" ColumnName="Dagger" />
+                <ScalarProperty Name="Mace" ColumnName="Mace" />
+                <ScalarProperty Name="Sword" ColumnName="Sword" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="Vitality" ColumnName="Vitality" />
+                <ScalarProperty Name="Parry" ColumnName="Parry" />
+                <ScalarProperty Name="Evasion" ColumnName="Evasion" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Quickness" ColumnName="Quickness" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Stamina" ColumnName="Stamina" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Gold" ColumnName="Gold" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arenas">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Arena">
+              <MappingFragment StoreEntitySet="Arena">
+                <ScalarProperty Name="Queued" ColumnName="Queued" />
+                <ScalarProperty Name="Forfeit" ColumnName="Forfeit" />
+                <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Armors">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Armor">
+              <MappingFragment StoreEntitySet="Armor">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TourmanemntReward" ColumnName="TourmanemntReward" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ArmorValue" ColumnName="ArmorValue" />
+                <ScalarProperty Name="ArmorTypeId" ColumnName="ArmorTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArmorTypes">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.ArmorType">
+              <MappingFragment StoreEntitySet="ArmorType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shields">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Shield">
+              <MappingFragment StoreEntitySet="Shield">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TourmanemntReward" ColumnName="TourmanemntReward" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ReqShieldMastery" ColumnName="ReqShieldMastery" />
+                <ScalarProperty Name="BlockValue" ColumnName="BlockValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapons">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Weapon">
+              <MappingFragment StoreEntitySet="Weapon">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TwoHanded" ColumnName="TwoHanded" />
+                <ScalarProperty Name="TournamentReward" ColumnName="TournamentReward" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ReqWeaponMastery" ColumnName="ReqWeaponMastery" />
+                <ScalarProperty Name="MaximumDamage" ColumnName="MaximumDamage" />
+                <ScalarProperty Name="MinimumDamage" ColumnName="MinimumDamage" />
+                <ScalarProperty Name="WeaponTypeId" ColumnName="WeaponTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentCharacters">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.EquipmentCharacter">
+              <MappingFragment StoreEntitySet="EquipmentCharacter">
+                <ScalarProperty Name="Equipped" ColumnName="Equipped" />
+                <ScalarProperty Name="OffHandEquipped" ColumnName="OffHandEquipped" />
+                <ScalarProperty Name="MainHandEquipped" ColumnName="MainHandEquipped" />
+                <ScalarProperty Name="ArmorId" ColumnName="ArmorId" />
+                <ScalarProperty Name="ShieldId" ColumnName="ShieldId" />
+                <ScalarProperty Name="WeaponId" ColumnName="WeaponId" />
+                <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CombatLogs">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.CombatLog">
+              <MappingFragment StoreEntitySet="CombatLog">
+                <ScalarProperty Name="Log" ColumnName="Log" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="Spoiler" ColumnName="Spoiler" />
+                <ScalarProperty Name="Player" ColumnName="Player" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

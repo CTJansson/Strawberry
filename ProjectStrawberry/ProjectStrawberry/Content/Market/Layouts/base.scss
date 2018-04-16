@@ -1,0 +1,43 @@
+﻿@import '../_variables';
+
+.md-banner-wrapper {
+    z-index: 9000;
+    position: relative;
+}
+
+.md-container {
+
+
+    .md-btn {
+        cursor: pointer;
+        text-align: center;
+        font-size:0.6em;
+        transition:font-size 200ms;
+        line-height:1em;
+    }
+
+    .md-content {
+        font-size:0.6em;
+        transition:font-size 200ms;
+        margin:0;
+        padding:0;
+        line-height:1.5em;
+    }
+
+    .md-logo {
+        display:none;
+        text-indent: -1000px;
+        overflow:hidden;
+        width:100px;
+        height:22px;
+        background-size: cover;
+        //background-image: $logo;
+        opacity:0.9;
+        transition: opacity 200ms;
+    }
+
+    .cc_logo:hover,
+    .cc_logo:active {
+        opacity:1;
+    }
+}

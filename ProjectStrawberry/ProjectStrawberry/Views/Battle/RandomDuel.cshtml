@@ -1,0 +1,10 @@
+﻿@model bool?
+
+@if (Model == true)
+{
+    <button>@Ajax.ActionLink("Update", "Update", "Battle", null, new AjaxOptions { UpdateTargetId = "body-main" }, null)</button>
+}
+else
+{
+    <p>bool is false</p>
+}

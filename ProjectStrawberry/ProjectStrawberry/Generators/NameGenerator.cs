@@ -1,0 +1,146 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ProjectStrawberry.Generators
+{
+    public class NameGenerator
+    {
+        public string GenerateFirstName(int index)
+        {
+            List<string> names = new List<string>()
+            {
+                "Donald",
+                "Gordon",
+                "Rory",
+                "Berry",
+                "Canyon",
+                "Brock",
+                "Stone",
+                "Pandora",
+                "Toku",
+                "Naka",
+                "Ichi",
+                "Kika",
+                "Fuku",
+                "Saka",
+                "Man",
+                "Win",
+                "Hero",
+                "Project",
+                "Pride",
+                "Midnight",
+                "Sun",
+                "Killer",
+                "Healer",
+                "Sune",
+                "Abby",
+                "Snake",   
+                "Robin",
+                "Horse",
+                "Tanya",
+                "Poppy",
+                "Crow",
+                "Gary",
+                "Groose",       
+                "Niko",
+                "Maple",
+                "Syrup",
+                "Ilia",
+                "Talo",
+                "Sera",
+                "Finley",       
+                "Sayen",
+                "Sekai",
+                "Shell",
+                "Dakota",
+                "Elise",
+                "Hye",
+                "Fei",
+            };
+
+            return names.ElementAt(index);
+        }
+
+        public string GenerateLastName(int index)
+        {
+            List<string> names = new List<string>()
+            {
+                "Freeman",
+                "Halloween",
+                "Winter",
+                "Summer",
+                "Spring",
+                "Avatar",
+                "the Paladin",
+                "the Warrior",
+                "the Rogue",
+                "the Hunter",
+                "of Win",
+                "of Horse",
+                "the Law",
+                "the Mountain King",
+                "the Cloudwatcher",
+                "the Warlock",
+                "Black",
+                "Spirit",
+                "Fake",
+                "Animal",
+                "Sworddancer",
+                "Alien",
+                "of Buddy",
+                "Bleed",
+                "of Death",
+                "the One",
+                "the Two",
+                "the Four",
+                "of Judgement",
+                "the Tear",
+                "of Fisherman",
+                "the Fisherman",
+                "the Betrayer",
+                "the Hermit",
+                "the Prince of Fail",
+                "the Lord of Nothing",
+                "of Tomorrow",
+                "the Tale",
+                "of Priest",
+                "of Mercy",
+                "of Doom",
+                "the Bulied",
+                "Rage",
+                "of Toy",
+                "of Leaf",
+                "the Pingu",
+                "the Sloth",
+                "the Fake",
+                "the Child",
+                "Face",
+                "the Pleasure",
+                "of Time",
+                "Link",
+                "of Bitch",
+                "the Fegit",
+                "of Deax",
+                "White",
+                "Black",
+                "the Bastard",
+                "Apelsin",
+                "Melon",
+                "Strawberry",
+                "of Fresh Corpse",
+                "the Bad Man",
+                "of Dawn",
+                "the Cry Baby",
+                "the Leader",
+                "of War",
+                "the Ace",
+                "the Lunatic",
+                "of Space",
+            };
+
+            return names.ElementAt(index);
+        }
+    }
+}

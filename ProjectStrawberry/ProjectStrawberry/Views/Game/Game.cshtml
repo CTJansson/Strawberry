@@ -1,0 +1,76 @@
+﻿@model ProjectStrawberry.Models.CharacterModel
+
+@{
+    ViewBag.Title = "Project Strawberry";
+}
+<div id="header">
+    <img src="~/Content/Images/header2.png" class="" />
+    <nav class="navbar navbar-default" style="padding: 0px 150px 0px 150px">
+        <div class="container">
+            @Ajax.ActionLink("Tower", "Arena", "Game", null, new AjaxOptions { HttpMethod = "GET" }, new { @class = "navbar-text navbar-link" })
+            @Ajax.ActionLink("Arena", "Arena", "Battle", null, new AjaxOptions { UpdateTargetId = "body-main" }, new { @class = "navbar-text navbar-link" })
+            @Ajax.ActionLink("Market", "GetEquipment", "Market", null, new AjaxOptions { UpdateTargetId = "body-main" }, new { @class = "navbar-text navbar-link" })
+            @Ajax.ActionLink("Guild", "Arena", "Game", null, new AjaxOptions { HttpMethod = "GET" }, new { @class = "navbar-text navbar-link" })
+            @Ajax.ActionLink("Equipment", "GetEquipment", "Equipment", null, new AjaxOptions { UpdateTargetId = "body-main" }, new { @class = "navbar-text navbar-link" })
+            @Ajax.ActionLink("Leaderboard", "Index", "Leaderboard", null, new AjaxOptions { UpdateTargetId = "body-main" }, new { @class = "navbar-text navbar-link" })
+            @Html.ActionLink("Delete character", "Delete", "Game", null, new { @class = "navbar-text navbar-link" })
+        </div>
+    </nav>
+</div>
+<div id="body">
+    <div id="body-character" class="centerize panel panel-default" style="float:left; width:15%;">
+        <div style="padding-top:15px;">
+            @if (@Model.Gender.Id == 1)
+            {
+                <img src="~/Content/Images/AvatarFemales/@Model.Avatar" class="centerize img-portrait" style="display:block;" />
+            }
+            else
+            {
+                <img src="~/Content/Images/AvatarMales/@Model.Avatar" class="centerize img-portrait" />
+            }
+        </div>
+        <div style="text-align:center; font-weight:bold;">@Model.Name</div>
+        <div style="padding: 0px 0px 10px 15px;">
+            <div style="float:left;">
+                <table>
+                    <tr>
+                        <td style="text-align:right;">Health:</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;">Exp:</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;">Level:</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;">Glods:</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float:left; margin-left:10px;">
+                <table>
+                    <tr>
+                        <td>@Model.Health/@Model.Vitality</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Experience</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Level</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Gold</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div id="body-main" class="panel panel-default" style="float:left; margin-left:20px; max-width:800px">
+        asdf
+    </div>
+    <div style="clear:both;"></div>
+</div>
+
+
+

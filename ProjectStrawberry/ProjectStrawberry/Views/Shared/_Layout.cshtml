@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        <link href="~/Content/Market/popupmessage.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="NAME is a text-based rpg webgame where you create a character, fight against other characters to rise in levels and become stronger, buy new equipment in the market with your hard earned glods. Participate in tournaments and at the end of an ERA there will be held a big tournament to crown that ERAs best character" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Kiibun", "Index", "Game", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("News", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("Manual", "Index", "Manual")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+
+            <p>&copy; @DateTime.Now.Year - Project Strawberry</p>
+        </footer>
+    </div>
+    <div id="popup" class="">
+        <div class="content">
+            <div style="float:left; width:80%;">
+                <p id="popup-message"></p>
+            </div>
+            <div style="float:right;">
+                <button onclick="closediv()" style="color:#323232">Close</button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <script src="~/Scripts/popupscripts.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    <script src="~/Scripts/market.js"></script>
+    <script src="~/Scripts/charactercreation.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
+

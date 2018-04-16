@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectStrawberryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="Avatar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gold" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Experience" Type="int" Nullable="false" />
+          <Property Name="Stamina" Type="int" Nullable="false" />
+          <Property Name="Strength" Type="int" Nullable="false" />
+          <Property Name="Quickness" Type="int" Nullable="false" />
+          <Property Name="Block" Type="int" Nullable="false" />
+          <Property Name="Evasion" Type="int" Nullable="false" />
+          <Property Name="Parry" Type="int" Nullable="false" />
+          <Property Name="Vitality" Type="int" Nullable="false" />
+          <Property Name="Health" Type="int" Nullable="false" />
+          <Property Name="Sword" Type="int" Nullable="false" />
+          <Property Name="Mace" Type="int" Nullable="false" />
+          <Property Name="Dagger" Type="int" Nullable="false" />
+          <Property Name="Spear" Type="int" Nullable="false" />
+          <Property Name="Axe" Type="int" Nullable="false" />
+          <Property Name="Polearm" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WeaponTypeId" Type="int" Nullable="false" />
+          <Property Name="MinimumDamage" Type="int" Nullable="false" />
+          <Property Name="MaximumDamage" Type="int" Nullable="false" />
+          <Property Name="ReqWeaponMastery" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="TournamentReward" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeaponCharacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterId" Type="int" Nullable="false" />
+          <Property Name="WeaponId" Type="int" Nullable="false" />
+          <Property Name="MainHandEquipped" Type="bit" Nullable="false" />
+          <Property Name="OffHandEquipped" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeaponType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Character__Class__12FDD1B2">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Gende__1209AD79">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__WeaponTy__3D2915A8">
+          <End Role="WeaponType" Type="Self.WeaponType" Multiplicity="1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeaponType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeaponCha__Chara__1B9317B3">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="WeaponCharacter" Type="Self.WeaponCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeaponCharacter">
+              <PropertyRef Name="CharacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeaponCha__Weapo__1C873BEC">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="WeaponCharacter" Type="Self.WeaponCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeaponCharacter">
+              <PropertyRef Name="WeaponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectStrawberryModelStoreContainer">
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weapon" EntityType="Self.Weapon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeaponCharacter" EntityType="Self.WeaponCharacter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeaponType" EntityType="Self.WeaponType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Character__Class__12FDD1B2" Association="Self.FK__Character__Class__12FDD1B2">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Gende__1209AD79" Association="Self.FK__Character__Gende__1209AD79">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeaponTy__3D2915A8" Association="Self.FK__Weapon__WeaponTy__3D2915A8">
+            <End Role="WeaponType" EntitySet="WeaponType" />
+            <End Role="Weapon" EntitySet="Weapon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeaponCha__Chara__1B9317B3" Association="Self.FK__WeaponCha__Chara__1B9317B3">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="WeaponCharacter" EntitySet="WeaponCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeaponCha__Weapo__1C873BEC" Association="Self.FK__WeaponCha__Weapo__1C873BEC">
+            <End Role="Weapon" EntitySet="Weapon" />
+            <End Role="WeaponCharacter" EntitySet="WeaponCharacter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectStrawberryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gold" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Experience" Type="Int32" Nullable="false" />
+          <Property Name="Stamina" Type="Int32" Nullable="false" />
+          <Property Name="Strength" Type="Int32" Nullable="false" />
+          <Property Name="Quickness" Type="Int32" Nullable="false" />
+          <Property Name="Block" Type="Int32" Nullable="false" />
+          <Property Name="Evasion" Type="Int32" Nullable="false" />
+          <Property Name="Parry" Type="Int32" Nullable="false" />
+          <Property Name="Vitality" Type="Int32" Nullable="false" />
+          <Property Name="Health" Type="Int32" Nullable="false" />
+          <Property Name="Sword" Type="Int32" Nullable="false" />
+          <Property Name="Mace" Type="Int32" Nullable="false" />
+          <Property Name="Dagger" Type="Int32" Nullable="false" />
+          <Property Name="Spear" Type="Int32" Nullable="false" />
+          <Property Name="Axe" Type="Int32" Nullable="false" />
+          <Property Name="Polearm" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Character__Class__12FDD1B2" FromRole="Character" ToRole="Class" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Character__Gende__1209AD79" FromRole="Character" ToRole="Gender" />
+          <NavigationProperty Name="WeaponCharacters" Relationship="Self.FK__WeaponCha__Chara__1B9317B3" FromRole="Character" ToRole="WeaponCharacter" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Characters" Relationship="Self.FK__Character__Class__12FDD1B2" FromRole="Class" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Characters" Relationship="Self.FK__Character__Gende__1209AD79" FromRole="Gender" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="Weapon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WeaponTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MinimumDamage" Type="Int32" Nullable="false" />
+          <Property Name="MaximumDamage" Type="Int32" Nullable="false" />
+          <Property Name="ReqWeaponMastery" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="TournamentReward" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="WeaponType" Relationship="Self.FK__Weapon__WeaponTy__3D2915A8" FromRole="Weapon" ToRole="WeaponType" />
+          <NavigationProperty Name="WeaponCharacters" Relationship="Self.FK__WeaponCha__Weapo__1C873BEC" FromRole="Weapon" ToRole="WeaponCharacter" />
+        </EntityType>
+        <EntityType Name="WeaponCharacter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterId" Type="Int32" Nullable="false" />
+          <Property Name="WeaponId" Type="Int32" Nullable="false" />
+          <Property Name="MainHandEquipped" Type="Boolean" Nullable="false" />
+          <Property Name="OffHandEquipped" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="Self.FK__WeaponCha__Chara__1B9317B3" FromRole="WeaponCharacter" ToRole="Character" />
+          <NavigationProperty Name="Weapon" Relationship="Self.FK__WeaponCha__Weapo__1C873BEC" FromRole="WeaponCharacter" ToRole="Weapon" />
+        </EntityType>
+        <EntityType Name="WeaponType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Weapons" Relationship="Self.FK__Weapon__WeaponTy__3D2915A8" FromRole="WeaponType" ToRole="Weapon" />
+        </EntityType>
+        <Association Name="FK__Character__Class__12FDD1B2">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Character__Gende__1209AD79">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeaponCha__Chara__1B9317B3">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="WeaponCharacter" Type="Self.WeaponCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeaponCharacter">
+              <PropertyRef Name="CharacterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weapon__WeaponTy__3D2915A8">
+          <End Role="WeaponType" Type="Self.WeaponType" Multiplicity="1" />
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeaponType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Weapon">
+              <PropertyRef Name="WeaponTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WeaponCha__Weapo__1C873BEC">
+          <End Role="Weapon" Type="Self.Weapon" Multiplicity="1" />
+          <End Role="WeaponCharacter" Type="Self.WeaponCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Weapon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WeaponCharacter">
+              <PropertyRef Name="WeaponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectStrawberryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Self.Character" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Weapons" EntityType="Self.Weapon" />
+          <EntitySet Name="WeaponCharacters" EntityType="Self.WeaponCharacter" />
+          <EntitySet Name="WeaponTypes" EntityType="Self.WeaponType" />
+          <AssociationSet Name="FK__Character__Class__12FDD1B2" Association="Self.FK__Character__Class__12FDD1B2">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Character__Gende__1209AD79" Association="Self.FK__Character__Gende__1209AD79">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeaponCha__Chara__1B9317B3" Association="Self.FK__WeaponCha__Chara__1B9317B3">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="WeaponCharacter" EntitySet="WeaponCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weapon__WeaponTy__3D2915A8" Association="Self.FK__Weapon__WeaponTy__3D2915A8">
+            <End Role="WeaponType" EntitySet="WeaponTypes" />
+            <End Role="Weapon" EntitySet="Weapons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WeaponCha__Weapo__1C873BEC" Association="Self.FK__WeaponCha__Weapo__1C873BEC">
+            <End Role="Weapon" EntitySet="Weapons" />
+            <End Role="WeaponCharacter" EntitySet="WeaponCharacters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectStrawberryModelStoreContainer" CdmEntityContainer="ProjectStrawberryEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Gold" ColumnName="Gold" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Stamina" ColumnName="Stamina" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Quickness" ColumnName="Quickness" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Evasion" ColumnName="Evasion" />
+                <ScalarProperty Name="Parry" ColumnName="Parry" />
+                <ScalarProperty Name="Vitality" ColumnName="Vitality" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="Sword" ColumnName="Sword" />
+                <ScalarProperty Name="Mace" ColumnName="Mace" />
+                <ScalarProperty Name="Dagger" ColumnName="Dagger" />
+                <ScalarProperty Name="Spear" ColumnName="Spear" />
+                <ScalarProperty Name="Axe" ColumnName="Axe" />
+                <ScalarProperty Name="Polearm" ColumnName="Polearm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapons">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.Weapon">
+              <MappingFragment StoreEntitySet="Weapon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WeaponTypeId" ColumnName="WeaponTypeId" />
+                <ScalarProperty Name="MinimumDamage" ColumnName="MinimumDamage" />
+                <ScalarProperty Name="MaximumDamage" ColumnName="MaximumDamage" />
+                <ScalarProperty Name="ReqWeaponMastery" ColumnName="ReqWeaponMastery" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="TournamentReward" ColumnName="TournamentReward" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeaponCharacters">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.WeaponCharacter">
+              <MappingFragment StoreEntitySet="WeaponCharacter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CharacterId" ColumnName="CharacterId" />
+                <ScalarProperty Name="WeaponId" ColumnName="WeaponId" />
+                <ScalarProperty Name="MainHandEquipped" ColumnName="MainHandEquipped" />
+                <ScalarProperty Name="OffHandEquipped" ColumnName="OffHandEquipped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeaponTypes">
+            <EntityTypeMapping TypeName="ProjectStrawberryModel.WeaponType">
+              <MappingFragment StoreEntitySet="WeaponType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

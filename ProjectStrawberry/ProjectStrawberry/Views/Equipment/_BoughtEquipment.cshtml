@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<ProjectStrawberry.Models.EquipmentModelTest>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (@item.MainHandEquipped == true)
+                    {
+                        <tr>
+                            <td>@item.ModelWeapon.Name</td>
+                            <td>Mainhand</td>
+                            <td>@Ajax.ActionLink("Unequip", "UnequipWeapon", "Equipment", new { id = @item.Id, hand = 1}, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                    else if (@item.OffHandEquipped == true)
+                    {
+
+                        <tr>
+                            <td>@item.ModelWeapon.Name</td>
+                            <td>Offhand</td>
+                            <td>@Ajax.ActionLink("Unequip", "UnequipWeapon", "Equipment", new { id = @item.Id, hand = 2}, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (@item.Equipped == true && @item.ModelArmor != null)
+                    {
+                        <tr>
+                            <td>@item.ModelArmor.Name</td>
+                            <td>@item.ModelArmor.ModelArmorType.Name</td>
+                            <td>@Ajax.ActionLink("Unequip", "UnequipArmor", "Equipment", new { id = @item.Id }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    if (@item.MainHandEquipped == false && @item.OffHandEquipped == false && @item.ModelArmor == null && @item.ModelShield == null )
+                    {
+                        <tr>
+                            <td>@item.ModelWeapon.Name</td>
+                            <td>@item.ModelWeapon.WeaponType.Name</td>
+                            <td>@Ajax.ActionLink("Mainhand", "EquipWeapon", "Equipment", new { id = @item.Id, hand = 1, weaponId = @item.ModelWeapon.Id }, new AjaxOptions { UpdateTargetId = "body-main" }) - @Ajax.ActionLink("Offhand", "EquipWeapon", "Equipment", new { id = @item.Id, hand = 2, weaponId = @item.ModelWeapon.Id }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                    else if (@item.MainHandEquipped == false && @item.OffHandEquipped == false && item.ModelArmor == null && @item.ModelWeapon == null)
+                    {
+                        <tr>
+                            <td>@item.ModelShield.Name</td>
+                            <td>Shield</td>
+                            <td>@Ajax.ActionLink("Offhand", "EquipWeapon", "Equipment", new { id = @item.Id, hand = 2, weaponId = 0 }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    if (@item.Equipped == false && @item.ModelArmor != null)
+                    {
+                        <tr>
+                            <td>@item.ModelArmor.Name</td>
+                            <td>@item.ModelArmor.ModelArmorType.Name</td>
+                            <td>@Ajax.ActionLink("Equip", "EquipArmor", "Equipment", new { id = @item.Id, slot = @item.ModelArmor.ModelArmorType.Id }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

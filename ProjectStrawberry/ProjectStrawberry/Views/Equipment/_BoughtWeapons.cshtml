@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProjectStrawberry.Models.EquipmentModel>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (@item.MainHandEquipped == true)
+                    {
+                        <tr>
+                            <td>Mainhand</td>
+                            <td>@item.WeaponName</td>
+                            <td>@Ajax.ActionLink("Unequip", "UnequipWeapon", "Equipment", new { id = @item.Id, hand = 1 }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                    else if (@item.OffHandEquipped == true)
+                    {
+
+                        <tr>
+                            <td>Offhand</td>
+                            <td>@item.WeaponName</td>
+                            <td>@Ajax.ActionLink("Unequip", "UnequipWeapon", "Equipment", new { id = @item.Id, hand = 2 }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container" style="width:100%; margin-top:5px;">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    if (@item.MainHandEquipped == false && @item.OffHandEquipped == false)
+                    {
+                        <tr>
+                            <td>@item.WeaponName</td>
+                            <td>@Ajax.ActionLink("Mainhand", "EquipWeapon", "Equipment", new { id = @item.Id, hand = 1, weaponId = @item.WeaponId }, new AjaxOptions { UpdateTargetId = "body-main" }) - @Ajax.ActionLink("Offhand", "EquipWeapon", "Equipment", new { id = @item.Id, hand = 2, weaponId = @item.WeaponId }, new AjaxOptions { UpdateTargetId = "body-main" })</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

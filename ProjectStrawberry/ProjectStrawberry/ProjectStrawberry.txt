@@ -1,0 +1,67 @@
+﻿Features:
+
+Character Creation:
+
+- Choose name
+-- Max 12 characters
+
+- Choose gender
+-- Female / Male (No bonuses)
+
+- Choose class
+-- Assassin (+2 Quickness, +1 Strength)
+-- Bounty Hunter (+2 Strength, +1 Quickness)
+-- Crusader (+2 Vitality, +1 Stamina)
+-- Duelist (+1 Evasion, +1 Strength, +1 Quickness)
+-- Fighter (+2 Strength, +1 Vitality)
+-- Guard (+2 Vitality, +1 Parry)
+-- Thief (+2 Quickness, +1 Evasion)
+
+- Choose attributes
+-- OFFENSIVE
+--- Stamina / Last longer in fights
+--- Strength / Makes you hit harder, carry more weight (+1 damage / Strength, +0.5 Carry / Strength)
+--- Quickness / If you have more quickness, you attack first
+-- DEFENSIVE
+--- Block / Increases your chance to block an attack (X damage from attack)
+--- Evasion / Increases your chance to evade an attack (100% damage reduction)
+--- Parry / Increases your chance to parry an attack (50% damage reduction)
+--- Vitality / Increases your Health (+2 health / Vitality)
+--- Health / Vitality * 2
+
+Post Character Creation
+
+- Experience generators
+-- Duels / 3-5xp for a win, 1-2xp for a loss
+-- Challenges / 3-5xp for a win, 1-2xp for a loss
+-- Monsters / 3xp for a win, 0xp for a loss
+-- Gambling / 5xp for a win, 0xp for a loss
+--- Texas Hold'Em
+--- Blackjack
+
+- Money generators
+-- Duels / 3-5 glods for a win, 0 glod for a loss
+-- Challenges / 3-5 glods for a win, 0 glod for a loss
+-- Monsters / 2-3 glods for a win, 0 glod for a loss
+-- Gambling / Depends on your bet 
+--- Texas Hold'Em / up to 10 glods 
+--- Blackjack / up to 10 glods
+
+Combat 
+
+- Hit% / Determined by a weapon proficiency requirement divided by the players' weapon proficiency.
+EX. A Mace 20 strength, 40wp, you 20strength and 30. 30/40 = 0.75 = 75% to hit.
+EX2. A sword 40wp, you 37wp, 37/40 = 0.925 = 93% to hit
+
+- Opponent's avoidance%
+EX. If a player has 100% hit chance, you are only reliant to your own avoidance to avoid the incoming attack.
+Cont. You have 15% chance to evade, 5% parry, then the player suddenly has 85% to make a damaging attack on you, you have 15% to avoid 100% damage and 5% to avoid 50% damage
+
+TODO
+
+Currently Alive? bit is not needed, any character which is alive exist in the database, if you die or remove your character send off to another table, delete from game table.
+Save statistic from weapons win/loss for balancing purposes.
+
+If a player has been waiting too long in random combat, he will be up against a dummy that is at equal strength.
+
+Possibly add "npc?" to weapons, we can then create weapons for npcs and it wont show up in the market.

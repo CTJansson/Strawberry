@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ProjectStrawberry.Models.Round>
+
+@foreach (var item in Model)
+{
+    <p>Round @item.RoundNr</p>
+    <p>@item.Log</p>
+
+    <p>---</p>
+}

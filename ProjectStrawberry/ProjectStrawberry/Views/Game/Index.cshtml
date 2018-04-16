@@ -1,0 +1,152 @@
+﻿@model ProjectStrawberry.Models.CharacterModel
+
+@{
+    ViewBag.Title = "Project Strawberry";
+}
+@{
+    using (Html.BeginForm("Index", "Game", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <h4>Create a new character.</h4>
+        <hr />
+
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div style="width:49%; float:left;">
+            <h3> <span class="label label-info col-lg-offset-1">General</span></h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @maxlength = "12" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.GenderId, null, new { @onchange = "showHideAvatars()", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Class, new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.ClassId, null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="" style="width:49%; float:left;">
+            <!--Avatar start-->
+
+            <div id="FemaleAvatars" class="form-group">
+                <div style="margin-top:5px;">
+                    <h3> <span class="label label-info col-lg-offset-1">Avatar</span></h3>
+                    @Html.DropDownListFor(model => model.Avatar, new SelectList(ViewBag.AvatarFemales), new { @onchange = "previewImage()", @class = "col-lg-offset-1 form-control", @id = "AvatarFemale" })
+                </div>
+                <img id="previewFemaleAvatar" src="" class="col-lg-offset-2" />
+            </div>
+            <div id="MaleAvatars" class="form-group">
+                <div style="margin-top:5px;">
+                    <h3> <span class="label label-info col-lg-offset-1">Avatar</span></h3>
+                    @Html.DropDownListFor(model => model.Avatar, new SelectList(ViewBag.AvatarMales), new { @onchange = "previewImage()", @class = "col-lg-offset-1 form-control", @id = "AvatarMale" })
+                </div>
+                <img id="previewMaleAvatar" src="" class="col-lg-offset-2" />
+            </div>
+        </div> <!--Avatar end-->
+
+        <div class="clear-divs"></div>
+        <div style="width:50%; float:left;">
+            <div class="col-lg-offset-1" style="float:left;">
+                <h3><span class="label label-info">Offensive</span></h3>
+            </div>
+            <div style="float:left;">
+                <h3><span class="label label-info col-lg-offset-1" id="OffensiveAmount">0</span></h3>
+            </div>
+            <div class="form-group">
+                <div class="margin-5px-bottom clear-divs"></div>
+
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Stamina, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Stamina, new { @class = "form-control", @Value = "0", @onkeyup = "calculateOffensive()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Strength, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Strength, new { @class = "form-control", @Value = "0", @onkeyup = "calculateOffensive()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Quickness, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Quickness, new { @class = "form-control", @Value = "0", @onkeyup = "calculateOffensive()" })
+                </div>
+            </div>
+            <div class="col-lg-offset-1" style="float:left;">
+                <h3><span class="label label-info">Defensive</span></h3>
+            </div>
+            <div style="float:left;">
+                <h3><span class="label label-info col-lg-offset-1" id="DefensiveAmount">0</span></h3>
+            </div>
+            <div class="form-group">
+                <div class="margin-5px-bottom clear-divs"></div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Block, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Block, new { @class = "form-control", @Value = "0", @onkeyup = "calculateDefensive()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Evasion, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Evasion, new { @class = "form-control", @Value = "0", @onkeyup = "calculateDefensive()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Parry, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Parry, new { @class = "form-control", @Value = "0", @onkeyup = "calculateDefensive()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Vitality, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Vitality, new { @class = "form-control", @Value = "0", @onkeyup = "calculateDefensive()", @style = "width:100px;" })
+                </div>
+            </div>
+        </div>
+        <div style="width:50%; float:left; margin-left:auto; margin-right:auto;">
+            <div class="col-lg-offset-1" style="float:left;">
+                <h3><span class="label label-info">Weapon Mastery</span></h3>
+            </div>
+            <div style="float:left;">
+                <h3><span class="label label-info col-lg-offset-1" id="WeaponMasteryAmount">0</span></h3>
+            </div>
+            <div class="form-group">
+                <div class="margin-5px-bottom clear-divs"></div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Axe, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Axe, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Dagger, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Dagger, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Mace, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Mace, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Polearm, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Polearm, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Spear, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Spear, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+                <div class="col-md-12 margin-5px-bottom">
+                    @Html.LabelFor(model => model.Sword, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Sword, new { @class = "form-control", @Value = "0", @onkeyup = "calculateWeaponMastery()" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-1">
+            <div class="col-lg-offset-1" style="float:left;">
+                <h3><span class="label label-info">Total</span></h3>
+            </div>
+            <div style="float:left;">
+                <h3><span class="label label-danger col-lg-offset-1" id="TotalAmount">0 / 60</span></h3>
+            </div>
+        </div>
+        <div style="float:left;">
+            <div class="col-lg-offset-1" style="float:left;">
+                <input type="submit" class="btn btn-primary" value="Create" />
+            </div>
+        </div>
+        <div class="clear-divs"></div>
+    }
+}
+
+
+
